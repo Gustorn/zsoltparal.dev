@@ -1,1 +1,1 @@
-# wordpress
+# Strapi API

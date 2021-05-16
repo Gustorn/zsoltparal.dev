@@ -1,14 +1,6 @@
-import { ListPostsQuery } from "@zsparal/wordpress/api";
-import { GetStaticProps } from "next";
 import Head from "next/head";
 
-import { wordpress } from "../core/api";
-
-interface HomeProps {
-  posts: ListPostsQuery;
-}
-
-export default function Home({ posts }: HomeProps) {
+export default function Home() {
   return (
     <div className="flex flex-col items-center justify-center min-h-screen py-2">
       <Head>
@@ -17,12 +9,6 @@ export default function Home({ posts }: HomeProps) {
       </Head>
 
       <main className="flex flex-col items-center justify-center flex-1 px-20 text-center">
-        <div>
-          {posts?.posts?.nodes?.map(node => (
-            <div key={node?.slug}>{node?.title}</div>
-          ))}
-        </div>
-
         <h1 className="text-6xl font-bold">
           Welcome to{" "}
           <a className="text-blue-600" href="https://nextjs.org">
@@ -91,11 +77,3 @@ export default function Home({ posts }: HomeProps) {
     </div>
   );
 }
-
-export const getStaticProps: GetStaticProps<HomeProps> = async () => {
-  const posts = await wordpress.listPosts();
-  console.log("Fetching posts");
-  return {
-    props: { posts },
-  };
-};

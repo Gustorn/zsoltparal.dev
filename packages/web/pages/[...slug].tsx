@@ -1,61 +1,49 @@
-import { filterMap } from "@zsparal/core/collections/arrays";
 import { assertUnreachable } from "@zsparal/core/types/type-assertions";
-import { createAst } from "@zsparal/wordpress/html-renderer/server";
 import { GetStaticPaths, GetStaticProps } from "next";
 import { useRouter } from "next/router";
 
-import { CategoryProps, WordpressCategory } from "~/components/wordpress/category";
-import { WordpressFallback } from "~/components/wordpress/fallback";
-import { PostProps, WordpressPost } from "~/components/wordpress/post";
-import { wordpress } from "~/core/api";
+import { CategoryProps, CmsCategory } from "~/components/cms/category";
+import { CmsFallback } from "~/components/cms/fallback";
+import { CmsPost, PostProps } from "~/components/cms/post";
 
 type TaggedContent<T extends string, TProps> = TProps & { readonly type: T };
 
-export type WordpressPageProps =
+export type CmsPageProps =
   | TaggedContent<"post", PostProps>
   | TaggedContent<"category", CategoryProps>
   | { type: "404" };
 
-export default function WordpressPage(props: WordpressPageProps) {
+export default function CmsPage(props: CmsPageProps) {
   const router = useRouter();
 
   if (router.isFallback) {
-    return <WordpressFallback />;
+    return <CmsFallback />;
   }
 
   switch (props.type) {
     case "post":
-      return <WordpressPost {...props} />;
+      return <CmsPost {...props} />;
     case "category":
-      return <WordpressCategory {...props} />;
+      return <CmsCategory {...props} />;
     case "404":
       return null;
     default:
-      assertUnreachable(props, "Unexpected Wordpress content type found");
+      assertUnreachable(props, "Unexpected CMS content type found");
   }
 }
 
-export const getStaticProps: GetStaticProps<WordpressPageProps> = async ({ params }) => {
-  const postQuery = await wordpress.getPostBySlug({ slug: (params?.slug as string[]).join("/") });
-  let props: WordpressPageProps = { type: "404" };
-  if (postQuery?.post) {
-    props = { type: "post", postContent: createAst(postQuery.post.content) };
-  }
+export const getStaticProps: GetStaticProps<CmsPageProps> = () => {
+  const props: CmsPageProps = { type: "404" };
 
-  return {
+  return Promise.resolve({
     props,
     notFound: props.type === "404",
-  };
+  });
 };
 
-export const getStaticPaths: GetStaticPaths = async () => {
-  const posts = await wordpress.listLatestPosts();
-  return {
+export const getStaticPaths: GetStaticPaths = () => {
+  return Promise.resolve({
     fallback: true,
-    paths:
-      filterMap(posts?.posts?.nodes, post => {
-        const slug = post?.slug;
-        return slug && { params: { slug: slug.split("/") } };
-      }) ?? [],
-  };
+    paths: [],
+  });
 };

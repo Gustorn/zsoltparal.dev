@@ -21,7 +21,9 @@
     ]
   },
   "resolutions": {
-    "chokidar": "^3.0.0"
+    "chokidar": "^3.0.0",
+    "webpack": "^5.0.0",
+    "strapi-admin/webpack": "^4.0.0"
   },
   "dependencies": {
     "strapi-connector-mongoose": "3.6.2"

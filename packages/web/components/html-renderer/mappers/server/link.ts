@@ -6,12 +6,12 @@ export const convertLink = makeMapper(function convertLink(node) {
   }
 
   const href = node.props.href;
-  const wpUrl = process.env.NEXT_PUBLIC_WP_URL;
-  if (typeof href !== "string" || !wpUrl || !href.startsWith(wpUrl)) {
+  const cmsUrl = process.env.NEXT_PUBLIC_CMS_URL;
+  if (typeof href !== "string" || !cmsUrl || !href.startsWith(cmsUrl)) {
     return node;
   }
 
-  const relativeHref = href.replace(wpUrl, "");
+  const relativeHref = href.replace(cmsUrl, "");
   node.props.href = relativeHref ? relativeHref : "/";
   node.meta.nextLink = true;
 

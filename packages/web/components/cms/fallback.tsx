@@ -1,3 +1,3 @@
-export function WordpressFallback() {
+export function CmsFallback() {
   return <div>Loading page...</div>;
 }
