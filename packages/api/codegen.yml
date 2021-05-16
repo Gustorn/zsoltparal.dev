@@ -1,0 +1,9 @@
+overwrite: true
+schema: "http://kangawp.local/graphql"
+documents: "api/**/*.{graphql,js,ts,jsx,tsx}"
+generates:
+  api/index.ts:
+    plugins:
+      - typescript
+      - typescript-operations
+      - typescript-graphql-request

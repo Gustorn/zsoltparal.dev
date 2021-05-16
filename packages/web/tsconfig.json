@@ -1,0 +1,22 @@
+{
+  "extends": "../tsconfig.json",
+  "compilerOptions": {
+    "baseUrl": "..",
+    "paths": {
+      "~/*": ["web/*"],
+      "@zsparal/core/*": ["core/*"],
+      "@zsparal/ui/*": ["ui/*"],
+      "@zsparal/wordpress/*": ["wordpress/*"]
+    }
+  },
+  "include": [
+    "components",
+    "pages",
+    "../core/**/*.ts",
+    "../core/**/*.tsx",
+    "../ui/**/*.ts",
+    "../ui/**/*.tsx",
+    "../wordpress/**/*.ts",
+    "../wordpress/**/*.tsx"
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  "extends": "../tsconfig.json",
+  "include": ["api", "html-renderer", "yoast"],
+  "compilerOptions": {
+    "baseUrl": "..",
+    "paths": {
+      "@zsparal/core/*": ["core/*"]
+    }
+  }
+}

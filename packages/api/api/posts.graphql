@@ -1,0 +1,41 @@
+fragment PostList on RootQueryToPostConnection {
+  nodes {
+    title
+    author {
+      node {
+        name
+      }
+    }
+    date
+    slug
+  }
+}
+
+query listLatestPosts {
+  posts(first: 3, where: { orderby: { field: DATE, order: DESC } }) {
+    ...PostList
+  }
+}
+
+query listPosts {
+  posts {
+    ...PostList
+  }
+}
+
+query getPostBySlug($slug: ID!) {
+  post(id: $slug, idType: SLUG) {
+    author {
+      node {
+        name
+      }
+    }
+    seo {
+      fullHead
+    }
+    date
+    title
+    excerpt
+    content
+  }
+}

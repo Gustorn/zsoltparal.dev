@@ -1,0 +1,29 @@
+{
+  "name": "zsoltparal.dev",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "Gustorn <gustorn@gmail.com>",
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "web:dev": "yarn workspace @zsparal/web dev",
+    "web:build": "yarn workspace @zsparal/web build",
+    "web:start": "yarn workspace @zsparal/web start",
+    "api:generate": "yarn workspace @zsparal/api generate",
+    "cms:dev": "yarn workspace @zsparal/cms develop",
+    "cms:build": "yarn workspace @zsparal/cms build",
+    "cms:start": "yarn workspace @zsparal/cms start"
+  },
+  "workspaces": {
+    "packages": [
+      "packages/*",
+      "packages/types/himalaya"
+    ]
+  },
+  "resolutions": {
+    "chokidar": "^3.0.0"
+  },
+  "dependencies": {
+    "strapi-connector-mongoose": "3.6.2"
+  }
+}

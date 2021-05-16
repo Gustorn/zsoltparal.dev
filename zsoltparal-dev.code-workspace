@@ -1,0 +1,47 @@
+{
+  "folders": [
+    {
+      "name": "Core",
+      "path": "./packages/core"
+    },
+    {
+      "name": "Web",
+      "path": "./packages/web"
+    },
+    {
+      "name": "Cms",
+      "path": "./packages/cms"
+    },
+    {
+      "name": "UI",
+      "path": "./packages/ui"
+    },
+    {
+      "name": "Api",
+      "path": "./packages/api"
+    },
+    {
+      "name": "Types",
+      "path": "./packages/types"
+    }
+  ],
+  "settings": {
+    "typescript.tsdk": "..\\..\\node_modules\\typescript\\lib",
+    "editor.formatOnSave": true,
+    "editor.quickSuggestions": {
+      "strings": true
+    },
+    "[typescript]": {
+      "editor.formatOnSave": false,
+      "editor.codeActionsOnSave": {
+        "source.fixAll": true
+      }
+    },
+    "[typescriptreact]": {
+      "editor.formatOnSave": false,
+      "editor.codeActionsOnSave": {
+        "source.fixAll": true
+      }
+    }
+  }
+}
