@@ -1,3 +1,3 @@
-# Strapi application
+# zsoltparal.dev Strapi CMS
 
-A quick description of your strapi application
+This is the CMS that's behind zsoltparal.dev.
