@@ -1,12 +1,9 @@
-name: Deploy
+name: "Deploy CMS to Heroku"
 
 on:
   push:
     branches:
       - main
-    paths:
-      - "packages/cms/*"
-      - "packages/cms/**/*"
 
 jobs:
   build:
