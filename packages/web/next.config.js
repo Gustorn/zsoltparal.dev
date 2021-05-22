@@ -8,6 +8,7 @@ const withBundleAnalyzer = require("@next/bundle-analyzer")({
 module.exports = withPlugins(
   [withPreact, withBundleAnalyzer, withTranspileModules(["@zsparal/core", "@zsparal/api"])],
   {
+    trailingSlash: true,
     future: {
       webpack5: true,
     },
