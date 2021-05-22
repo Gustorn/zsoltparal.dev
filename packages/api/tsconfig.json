@@ -1,6 +1,6 @@
 {
   "extends": "../tsconfig.json",
-  "include": ["api", "html-renderer", "yoast"],
+  "include": ["api", "html-renderer", "yoast", "index.ts"],
   "compilerOptions": {
     "baseUrl": "..",
     "paths": {
