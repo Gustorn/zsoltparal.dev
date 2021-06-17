@@ -62,6 +62,10 @@
     "displayName": {
       "type": "string",
       "required": true
+    },
+    "articles": {
+      "via": "author",
+      "collection": "article"
     }
   }
 }

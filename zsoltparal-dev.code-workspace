@@ -23,14 +23,10 @@
     {
       "name": "Github",
       "path": ".github"
-    },
-    {
-      "name": "Types",
-      "path": "./packages/types"
     }
   ],
   "settings": {
-    "typescript.tsdk": "..\\..\\node_modules\\typescript\\lib",
+    "typescript.tsdk": "..\\node_modules\\typescript\\lib",
     "editor.formatOnSave": true,
     "editor.quickSuggestions": {
       "strings": true
